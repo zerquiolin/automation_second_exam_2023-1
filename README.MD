@@ -48,7 +48,7 @@ Proceso encargado de transportar las cajas pasando desde el punto de deteccion h
 
 El flujo resultante de los segmentos analizados y definidos, se presenta a continuacion.
 
-![Diagrama de Flujo](Diagrama%20de%20Flujo.svg)
+![Diagrama de Flujo](Diagrama%20de%20Flujo.png)
 
 ## 3. Modelo de Simulación
 
