@@ -12,7 +12,7 @@ Fruver 1A S.A, una comercializadora de mandarinas busca aumentar su produccion p
 
 ## 2. Diseño de la Solución
 
-Identificando los aspectos claves para plantear un sistema automatizado que cumpla con las necesidades y expectativas de comerciar mandarinas, se identificaron los siguientes aspectos:
+Identificando los aspectos claves para plantear un sistema automatizado que cumpla con las necesidades y expectativas de comercializar mandarinas, se identificaron los siguientes aspectos:
 
 1. x
 2. x
@@ -20,7 +20,7 @@ Identificando los aspectos claves para plantear un sistema automatizado que cump
 4. x
 5. x
 
-Por lo cual, buscando mantener una correcta segmentacion y empaquetado de las mandarinas, se divira el sistema en 5 flujos, los cuales cumplen una unica funcion basica, buscando control y calidad en la entrega de mandarinas, mediante su cuenta y empaquetado, evitando desperdicios y/o empaquetado mandarinas fuera de lo inicialmente pactado, los cuales son presentados a continuacion:
+Por lo cual, buscando mantener una correcta segmentacion y empaquetado de las mandarinas, se divira el sistema en 5 flujos, los cuales cumplen una unica funcion basica, buscando control y calidad en la entrega de mandarinas, mediante su cuantificacion y empaquetado, evitando desperdicios y/o empaquetado de mandarinas fuera de lo inicialmente pactado, los flujo son presentados a continuacion.
 
 ### 2.1 Flujo del Sistema
 
@@ -28,15 +28,15 @@ Flujo dedicado a la recopilacion del cargamento de mandarinas, desempacado, sele
 
 #### 2.1.1 Flow #0 - Cargamento
 
-Proceso encargado de recibir, almacenar y actualizar el estado del cargamento de mandarinas.
+Proceso encargado de recibir, almacenar y actualizar el estado del cargamento entrante de mandarinas.
 
-#### 2.1.2 Flow #1 - Desempacado y Seleccion
+#### 2.1.2 Flow #1 - Descarga y Seleccion
 
-Proceso encargado de desempacar las mandarinas y llevarlas a la linea de transporte, seleccionando las mandarinas que cumplan con los estandares de calidad requeridos.
+Proceso delegado de descargar las mandarinas y llevarlas a la linea de transporte, seleccionando las mandarinas que cumplan con los estandares de calidad requeridos.
 
 #### 2.1.3 Flow #2 - Transporte de Mandarinas
 
-Proceso encargado de transportar las mandarinas seleccionadas desde el punto de accion del agentes hasta el punto de deteccion de mandarinas.
+Proceso encargado de transportar las mandarinas seleccionadas desde el punto de seleccion del agente hasta el punto de deteccion de mandarinas.
 
 #### 2.1.4 Flow #3 - Deteccion y Cuenta de Mandarinas
 
@@ -44,11 +44,11 @@ Proceso encargado de identificar y contar las mandarinas que pasan por el punto 
 
 #### 2.1.5 Flow #4 - Transporte de Cajas
 
-Proceso encargado de transportar las cajas desde el punto de deteccion hasta el punto de entrega.
+Proceso encargado de transportar las cajas pasando desde el punto de deteccion hasta el punto de entrega.
 
 ### 2.2 Diagrama de Flujo
 
-flujo
+![Diagrama de Flujo](Diagrama%20de%20Flujo.svg)
 
 ## 3. Modelo de Simulación
 
@@ -62,7 +62,7 @@ Bajo la aproximacion trabajada en el modelo de simulacion, la construccion e imp
 2. Servomotores
 3. Bateria
 4. Cableado y Conectores
-5. Sensor Infrarrojo
+   1. Sensor Infrarrojo
 
 ### 4.1 Diagrama de Circuito Eléctrico
 
