@@ -14,11 +14,9 @@ Fruver 1A S.A, una comercializadora de mandarinas busca aumentar su produccion p
 
 Identificando los aspectos claves para plantear un sistema automatizado que cumpla con las necesidades y expectativas de comercializar mandarinas, se identificaron los siguientes aspectos:
 
-1. x
-2. x
-3. x
-4. x
-5. x
+1. El objetivo diario es entregar 100 paquetes de mandarinas.
+2. Cada paquete debe contar con 50 mandarinas.
+3. No se debe requerir de intervension de personal a la hora de llenar los paquetes de mandarinas.
 
 Por lo cual, buscando mantener una correcta segmentacion y empaquetado de las mandarinas, se divira el sistema en 5 flujos, los cuales cumplen una unica funcion basica, buscando control y calidad en la entrega de mandarinas, mediante su cuantificacion y empaquetado, evitando desperdicios y/o empaquetado de mandarinas fuera de lo inicialmente pactado, los flujo son presentados a continuacion.
 
@@ -28,11 +26,11 @@ Flujo dedicado a la recopilacion del cargamento de mandarinas, desempacado, sele
 
 #### 2.1.1 Flow #0 - Cargamento
 
-Proceso encargado de recibir, almacenar y actualizar el estado del cargamento entrante de mandarinas.
+Proceso encargado de recibir, almacenar y actualizar el estado del cargamento entrante de mandarinas. Un agente es el encargado de la recoleccion y almacenamiento de las mandarinas.
 
 #### 2.1.2 Flow #1 - Descarga y Seleccion
 
-Proceso delegado de descargar las mandarinas y llevarlas a la linea de transporte, seleccionando las mandarinas que cumplan con los estandares de calidad requeridos.
+Proceso delegado de descargar las mandarinas y llevarlas a la linea de transporte, seleccionando las mandarinas que cumplan con los estandares de calidad requeridos. Un agente es el encargado de la seleccion de las mandarinas.
 
 #### 2.1.3 Flow #2 - Transporte de Mandarinas
 
@@ -47,6 +45,8 @@ Proceso encargado de identificar y contar las mandarinas que pasan por el punto 
 Proceso encargado de transportar las cajas pasando desde el punto de deteccion hasta el punto de entrega.
 
 ### 2.2 Diagrama de Flujo
+
+El flujo resultante de los segmentos analizados y definidos, se presenta a continuacion.
 
 ![Diagrama de Flujo](Diagrama%20de%20Flujo.svg)
 
@@ -100,10 +100,10 @@ Define las variables empleadas en el proceso de automatizacion de la linea de op
 | `Global`   | n_boxes_daily_milestone    | `INT`  | 0             | `Output`  | Define el estado inicial del sistema                      |
 | `Flow #0`  | is_loaded                  | `BOOL` | 0             | `Output`  | Define cuando el cargamento de mandarinas se recibio      |
 | `Flow #1`  | is_selecting_tangerines    | `BOOL` | 0             | `Input`   | Define el inicio de la automatizacion                     |
-| `Flow #2`  | is_moving_tangerines       | `BOOL` | 0             | `Ouput`   | Define el estado de la banda transportadora de mandarinas |
-| `Flow #3`  | is_sensor_active           | `BOOL` | 0             | `Ouput`   | Define el el tiempo que toma la primera mandarina         |
-| `Flow #3`  | is_tangerine_detected      | `BOOL` | 0             | `Ouput`   | Define el el tiempo que toma la primera mandarina         |
-| `Flow #4`  | is_moving_boxes            | `BOOL` | 0             | `Ouput`   | Define el el tiempo que toma la primera mandarina         |
+| `Flow #2`  | is_moving_tangerines       | `BOOL` | 0             | `Output`  | Define el estado de la banda transportadora de mandarinas |
+| `Flow #3`  | is_sensor_active           | `BOOL` | 0             | `Output`  | Define el el tiempo que toma la primera mandarina         |
+| `Flow #3`  | is_tangerine_detected      | `BOOL` | 0             | `Output`  | Define el el tiempo que toma la primera mandarina         |
+| `Flow #4`  | is_moving_boxes            | `BOOL` | 0             | `Output`  | Define el el tiempo que toma la primera mandarina         |
 | `Counters` | ctu_tangerines             | `CTU`  | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
 | `Counters` | ctu_boxes                  | `CTU`  | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
 
@@ -114,11 +114,12 @@ Define las variables empleadas en el proceso de las simulacion de automatizacion
 | Sección   | Variable                    | Tipo   | Valor Inicial | Operación | Descripción                                       |
 | :-------- | :-------------------------- | :----- | :------------ | :-------- | :------------------------------------------------ |
 | `Flow #0` | t_delivery_delay            | `TIME` | T#5S          | `Output`  | Define el tiempo que toma recibir las mandarinas  |
-| `Flow #2` | t_tangerines_conveyor_delay | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #3` | t_tangerines_fall_delay     | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #3` | t_restart_detection_delay   | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #4` | t_boxes_conveyor_delay      | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #4` | t_restart_new_box_delay     | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Flow #2` | t_tangerines_conveyor_delay | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
+| `Flow #3` | is_tangerine_not_detected   | `BOOL` | 0             | `Output`  | Define el el tiempo que toma la primera mandarina |
+| `Flow #3` | t_tangerines_fall_delay     | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
+| `Flow #3` | t_restart_detection_delay   | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
+| `Flow #4` | t_boxes_conveyor_delay      | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
+| `Flow #4` | t_restart_new_box_delay     | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
 | `Timers`  | ton_delivery                | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
 | `Timers`  | et_delivery                 | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
 | `Timers`  | ton_conveyor_tangerines     | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
