@@ -61,7 +61,7 @@ Define las variables empleadas en el proceso de automatizacion de la linea de op
 | `Global`   | n_tangerines_per_boxes     | `INT`  | 0             | `Output`  | Define el estado inicial del sistema                      |
 | `Global`   | n_boxes_daily_milestone    | `INT`  | 0             | `Output`  | Define el estado inicial del sistema                      |
 | `Flow #0`  | is_loaded                  | `BOOL` | 0             | `Output`  | Define cuando el cargamento de mandarinas se recibio      |
-| `Flow #1`  | is_selecting               | `BOOL` | 0             | `Input`   | Define el inicio de la automatizacion                     |
+| `Flow #1`  | is_selecting_tangerines    | `BOOL` | 0             | `Input`   | Define el inicio de la automatizacion                     |
 | `Flow #2`  | is_moving_tangerines       | `BOOL` | 0             | `Ouput`   | Define el estado de la banda transportadora de mandarinas |
 | `Flow #3`  | is_sensor_active           | `BOOL` | 0             | `Ouput`   | Define el el tiempo que toma la primera mandarina         |
 | `Flow #3`  | is_tangerine_detected      | `BOOL` | 0             | `Ouput`   | Define el el tiempo que toma la primera mandarina         |
