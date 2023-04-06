@@ -51,13 +51,13 @@ Define las variables empleadas en el proceso de automatizacion de la linea de op
 | :--------- | :------------------------- | :----- | :------------ | :-------- | :-------------------------------------------------------- |
 | `Global`   | is_on                      | `BOOL` | 0             | `Input`   | Define el inicio del sistema                              |
 | `Global`   | is_stop                    | `BOOL` | 0             | `Input`   | Define la parada del sistema                              |
-| `Global`   | n_tangerine_counter        | `INT`  | 0             | `Output`  | Mantiene la cuenta de la cantidad de manadarinas          |
-| `Global`   | n_box_counter              | `INT`  | 0             | `Output`  | Mantiene la cuenta de la cantidad de cajas despachadas    |
 | `Global`   | is_new_box                 | `BOOL` | 0             | `Output`  | Define la si una nueva caja se ha completado              |
 | `Global`   | is_milestone               | `BOOL` | 0             | `Output`  | Define el objetivo de cajas del dia                       |
-| `Global`   | is_reset_tangerine_counter | `BOOL` | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
-| `Global`   | is_reset_box_counter       | `BOOL` | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
 | `Global`   | is_fresh_start             | `BOOL` | 0             | `Output`  | Define el estado inicial del sistema                      |
+| `Global`   | is_reset_box_counter       | `BOOL` | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
+| `Global`   | is_reset_tangerine_counter | `BOOL` | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
+| `Global`   | n_box_counter              | `INT`  | 0             | `Output`  | Mantiene la cuenta de la cantidad de cajas despachadas    |
+| `Global`   | n_tangerine_counter        | `INT`  | 0             | `Output`  | Mantiene la cuenta de la cantidad de manadarinas          |
 | `Global`   | n_tangerines_per_boxes     | `INT`  | 0             | `Output`  | Define el estado inicial del sistema                      |
 | `Global`   | n_boxes_daily_milestone    | `INT`  | 0             | `Output`  | Define el estado inicial del sistema                      |
 | `Flow #0`  | is_loaded                  | `BOOL` | 0             | `Output`  | Define cuando el cargamento de mandarinas se recibio      |
@@ -73,23 +73,23 @@ Define las variables empleadas en el proceso de automatizacion de la linea de op
 
 Define las variables empleadas en el proceso de las simulacion de automatizacion de la linea de operacion de segmentacion, empaquetao y entrega de mandarinas.
 
-| Sección   | Variable                        | Tipo   | Valor Inicial | Operación | Descripción                                       |
-| :-------- | :------------------------------ | :----- | :------------ | :-------- | :------------------------------------------------ |
-| `Flow #0` | t_delivery_delay                | `TIME` | T#5S          | `Output`  | Define el tiempo que toma recibir las mandarinas  |
-| `Flow #2` | t_tangerines_conveyor_delay     | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #3` | t_tangerines_fall_delay         | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #3` | t_tangerines_fall_restart_delay | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #4` | t_boxes_conveyor_delay          | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #4` | t_boxes_conveyor_restart_delay  | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Timers`  | ton_delivery                    | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_delivery                     | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_conveyor_tangerines         | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_conveyor_tangerines          | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_tangerine_detector          | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_tangerine_detector           | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_conveyor_boxes              | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_conveyor_boxes               | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_restart_detection           | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_restart_detection            | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_restart_new_box             | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_restart_new_box              | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| Sección   | Variable                    | Tipo   | Valor Inicial | Operación | Descripción                                       |
+| :-------- | :-------------------------- | :----- | :------------ | :-------- | :------------------------------------------------ |
+| `Flow #0` | t_delivery_delay            | `TIME` | T#5S          | `Output`  | Define el tiempo que toma recibir las mandarinas  |
+| `Flow #2` | t_tangerines_conveyor_delay | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Flow #3` | t_tangerines_fall_delay     | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Flow #3` | t_restart_detection_delay   | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Flow #4` | t_boxes_conveyor_delay      | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Flow #4` | t_restart_new_box_delay     | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Timers`  | ton_delivery                | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_delivery                 | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_conveyor_tangerines     | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_conveyor_tangerines      | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_tangerine_detector      | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_tangerine_detector       | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_conveyor_boxes          | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_conveyor_boxes           | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_restart_detection       | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_restart_detection        | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_restart_new_box         | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_restart_new_box          | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
