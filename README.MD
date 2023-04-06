@@ -58,7 +58,9 @@ Define las variables empleadas en el proceso de automatizacion de la linea de op
 | `Global`   | is_reset_tangerine_counter | `BOOL` | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
 | `Global`   | is_reset_box_counter       | `BOOL` | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
 | `Global`   | is_fresh_start             | `BOOL` | 0             | `Output`  | Define el estado inicial del sistema                      |
-| `Flow #0`  | is_Loaded                  | `BOOL` | 0             | `Output`  | Define cuando el cargamento de mandarinas se recibio      |
+| `Global`   | n_tangerines_per_boxes     | `INT`  | 0             | `Output`  | Define el estado inicial del sistema                      |
+| `Global`   | n_boxes_daily_milestone    | `INT`  | 0             | `Output`  | Define el estado inicial del sistema                      |
+| `Flow #0`  | is_loaded                  | `BOOL` | 0             | `Output`  | Define cuando el cargamento de mandarinas se recibio      |
 | `Flow #1`  | is_selecting               | `BOOL` | 0             | `Input`   | Define el inicio de la automatizacion                     |
 | `Flow #2`  | is_moving_tangerines       | `BOOL` | 0             | `Ouput`   | Define el estado de la banda transportadora de mandarinas |
 | `Flow #3`  | is_sensor_active           | `BOOL` | 0             | `Ouput`   | Define el el tiempo que toma la primera mandarina         |
@@ -71,23 +73,23 @@ Define las variables empleadas en el proceso de automatizacion de la linea de op
 
 Define las variables empleadas en el proceso de las simulacion de automatizacion de la linea de operacion de segmentacion, empaquetao y entrega de mandarinas.
 
-| Sección   | Variable                    | Tipo   | Valor Inicial | Operación | Descripción                                       |
-| :-------- | :-------------------------- | :----- | :------------ | :-------- | :------------------------------------------------ |
-| `Flow #0` | t_delivery_delay            | `TIME` | T#5S          | `Output`  | Define el tiempo que toma recibir las mandarinas  |
-| `Flow #2` | t_tangerines_conveyor_delay | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #3` | t_tangerines_fall_delay     | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Flow #4` | t_boxes_conveyor_delay      | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
-| `Timers`  | ton_delivery                | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_delivery                 | `ET`   | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_selection               | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_selection                | `ET`   | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_conveyor_tangerines     | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_conveyor_tangerines      | `ET`   | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_tangerine_detector      | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_tangerine_detector       | `ET`   | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_conveyor_boxes          | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_conveyor_boxes           | `ET`   | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_restart_detection       | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_restart_detection        | `ET`   | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_restart_new_box         | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_restart_new_box          | `ET`   | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| Sección   | Variable                        | Tipo   | Valor Inicial | Operación | Descripción                                       |
+| :-------- | :------------------------------ | :----- | :------------ | :-------- | :------------------------------------------------ |
+| `Flow #0` | t_delivery_delay                | `TIME` | T#5S          | `Output`  | Define el tiempo que toma recibir las mandarinas  |
+| `Flow #2` | t_tangerines_conveyor_delay     | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Flow #3` | t_tangerines_fall_delay         | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Flow #3` | t_tangerines_fall_restart_delay | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Flow #4` | t_boxes_conveyor_delay          | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Flow #4` | t_boxes_conveyor_restart_delay  | `TIME` | T#5S          | `Ouput`   | Define el el tiempo que toma la primera mandarina |
+| `Timers`  | ton_delivery                    | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_delivery                     | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_conveyor_tangerines         | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_conveyor_tangerines          | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_tangerine_detector          | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_tangerine_detector           | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_conveyor_boxes              | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_conveyor_boxes               | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_restart_detection           | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_restart_detection            | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | ton_restart_new_box             | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| `Timers`  | et_restart_new_box              | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
