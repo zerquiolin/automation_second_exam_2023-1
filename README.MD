@@ -8,23 +8,61 @@
 
 ## 1. Análisis de la Problemática
 
-Explicar el problema y que se propone.
+Fruver 1A S.A, una comercializadora de mandarinas busca aumentar su produccion para desarrollarse y competir al nivel de comercializadoras internacionales. Por lo cual, propone la automatización de la línea de operación de segmentación, empaquetado y entrega de mandarinas, mediante un sistema que permita mantener control y calidad para asegurar la cantidad, calidad y entrega requerida.
 
 ## 2. Diseño de la Solución
 
-Etapas y actividades de cada una del ellas.
+Identificando los aspectos claves para plantear un sistema automatizado que cumpla con las necesidades y expectativas de comerciar mandarinas, se identificaron los siguientes aspectos:
 
-## 2.1 Diagrama de Flujo
+1. x
+2. x
+3. x
+4. x
+5. x
+
+Por lo cual, buscando mantener una correcta segmentacion y empaquetado de las mandarinas, se divira el sistema en 5 flujos, los cuales cumplen una unica funcion basica, buscando control y calidad en la entrega de mandarinas, mediante su cuenta y empaquetado, evitando desperdicios y/o empaquetado mandarinas fuera de lo inicialmente pactado, los cuales son presentados a continuacion:
+
+### 2.1 Flujo del Sistema
+
+Flujo dedicado a la recopilacion del cargamento de mandarinas, desempacado, seleccion de mandarinas, transporte de mandarinas, deteccion y cuenta de mandarinas, transporte de cajas y entrega de paquetes.
+
+#### 2.1.1 Flow #0 - Cargamento
+
+Proceso encargado de recibir, almacenar y actualizar el estado del cargamento de mandarinas.
+
+#### 2.1.2 Flow #1 - Desempacado y Seleccion
+
+Proceso encargado de desempacar las mandarinas y llevarlas a la linea de transporte, seleccionando las mandarinas que cumplan con los estandares de calidad requeridos.
+
+#### 2.1.3 Flow #2 - Transporte de Mandarinas
+
+Proceso encargado de transportar las mandarinas seleccionadas desde el punto de accion del agentes hasta el punto de deteccion de mandarinas.
+
+#### 2.1.4 Flow #3 - Deteccion y Cuenta de Mandarinas
+
+Proceso encargado de identificar y contar las mandarinas que pasan por el punto de deteccion, actualizando el estado del sistema para detener o activar las bandas de transporte.
+
+#### 2.1.5 Flow #4 - Transporte de Cajas
+
+Proceso encargado de transportar las cajas desde el punto de deteccion hasta el punto de entrega.
+
+### 2.2 Diagrama de Flujo
 
 flujo
 
 ## 3. Modelo de Simulación
 
-Explicamos y referenciamos la tabla de la deficion de variables
+Bajo la plataforma Codesys se desarrollo un sistema automatizado y simulado que suple las necesidades escenciales para Fruver 1A S.A, mediante la implementacion de los diferentes flujos identificados en el analisis de la problematica, incluyendo en cada uno de ellos estados, variables y eventos que permiten el correcto funcionamiento del sistema. Ademas, mediante una HMI (Human Machine Interface) se permite la interaccion con el usuario, permitiendo el inicio, paro, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones.
 
 ## 4. Implementación
 
-Parte fisica
+Bajo la aproximacion trabajada en el modelo de simulacion, la construccion e implementacion de la solucion a un protipo fisico implico el uso de diverso materiales como:
+
+1. Arduino UNO
+2. Servomotores
+3. Bateria
+4. Cableado y Conectores
+5. Sensor Infrarrojo
 
 ### 4.1 Diagrama de Circuito Eléctrico
 
