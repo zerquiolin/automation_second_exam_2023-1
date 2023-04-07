@@ -3,8 +3,8 @@
 ## Equipo de Trabajo
 
 - [Sergio Andres Amortegui Ardila](https://www.linkedin.com/in/sergioamar/) - 0000203657
-- [Juan David Forero Rodriguez](https://www.linkedin.com/in/juanforo/) - 0000201946
-- [Nadiv Esteban Mejia Morales](https://www.linkedin.com/in/nadivmejia/) - 0000204301
+- [Juan David Forero Rodriguez](https://www.linkedin.com/in/juanforo/) - 0000204301
+- [Nadiv Esteban Mejia Morales](https://www.linkedin.com/in/nadivmejia/) - 0000201946
 
 ## 1. Análisis de la Problemática
 
@@ -202,15 +202,15 @@ Define las variables empleadas en el proceso de las simulacion de automatizacion
 | `Flow #3` | t_restart_detection_delay   | `TIME` | T#5S          | `Output`  | Define el tiempo de espera que simula el tiempo entre caida de mandarinas                                     |
 | `Flow #4` | t_boxes_conveyor_delay      | `TIME` | T#5S          | `Output`  | Define el tiempo de espera que simula el movimiento de la banda transportadora de cajas                       |
 | `Flow #4` | t_restart_new_box_delay     | `TIME` | T#5S          | `Output`  | Define el tiempo de espera que simula el tiempo entre cajas completadas                                       |
-| `Timers`  | ton_delivery                | `TON`  | ?             | `Output`  | Define el timer que actua como delay para simular la entrega de las mandarinas                                |
-| `Timers`  | et_delivery                 | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_delivery`                                                          |
-| `Timers`  | ton_conveyor_tangerines     | `TON`  | ?             | `Output`  | Define el timer que actua como delay para simular el movimiento de la banda transportadora de mandarinas      |
-| `Timers`  | et_conveyor_tangerines      | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_conveyor_tangerines`                                               |
-| `Timers`  | ton_tangerine_detector      | `TON`  | ?             | `Output`  | Define el timer que actua como delay para simular el tiempo de deteccion entre mandarinas                     |
-| `Timers`  | et_tangerine_detector       | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_tangerine_detector`                                                |
-| `Timers`  | ton_conveyor_boxes          | `TON`  | ?             | `Output`  | Define el timer que actua como delay para simular el tiempo de movimiento de la banda transportadora de cajas |
-| `Timers`  | et_conveyor_boxes           | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_conveyor_boxes`                                                    |
-| `Timers`  | ton_restart_detection       | `TON`  | ?             | `Output`  | Define el timer que actua como delay para reiniciar el timer `ton_conveyor_tangerines`                        |
-| `Timers`  | et_restart_detection        | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_restart_detection`                                                 |
-| `Timers`  | ton_restart_new_box         | `TON`  | ?             | `Output`  | Define el timer que actua como delay para reiniciar el timer `ton_conveyor_boxes`                             |
-| `Timers`  | et_restart_new_box          | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_restar_new_box`                                                    |
+| `Timers`  | ton_delivery                | `TON`  | 0             | `Output`  | Define el timer que actua como delay para simular la entrega de las mandarinas                                |
+| `Timers`  | et_delivery                 | `TIME` | 0             | `Output`  | Define el tiempo actual para el timer `ton_delivery`                                                          |
+| `Timers`  | ton_conveyor_tangerines     | `TON`  | 0             | `Output`  | Define el timer que actua como delay para simular el movimiento de la banda transportadora de mandarinas      |
+| `Timers`  | et_conveyor_tangerines      | `TIME` | 0             | `Output`  | Define el tiempo actual para el timer `ton_conveyor_tangerines`                                               |
+| `Timers`  | ton_tangerine_detector      | `TON`  | 0             | `Output`  | Define el timer que actua como delay para simular el tiempo de deteccion entre mandarinas                     |
+| `Timers`  | et_tangerine_detector       | `TIME` | 0             | `Output`  | Define el tiempo actual para el timer `ton_tangerine_detector`                                                |
+| `Timers`  | ton_conveyor_boxes          | `TON`  | 0             | `Output`  | Define el timer que actua como delay para simular el tiempo de movimiento de la banda transportadora de cajas |
+| `Timers`  | et_conveyor_boxes           | `TIME` | 0             | `Output`  | Define el tiempo actual para el timer `ton_conveyor_boxes`                                                    |
+| `Timers`  | ton_restart_detection       | `TON`  | 0             | `Output`  | Define el timer que actua como delay para reiniciar el timer `ton_conveyor_tangerines`                        |
+| `Timers`  | et_restart_detection        | `TIME` | 0             | `Output`  | Define el tiempo actual para el timer `ton_restart_detection`                                                 |
+| `Timers`  | ton_restart_new_box         | `TON`  | 0             | `Output`  | Define el timer que actua como delay para reiniciar el timer `ton_conveyor_boxes`                             |
+| `Timers`  | et_restart_new_box          | `TIME` | 0             | `Output`  | Define el tiempo actual para el timer `ton_restar_new_box`                                                    |
