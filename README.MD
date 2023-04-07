@@ -58,9 +58,9 @@ Bajo la plataforma Codesys se desarrollo un sistema automatizado y simulado bajo
 
 #### 3.1.1 Red #1
 
-![Red 1](Assets/Red%201.png)
-
 Esta red simula el tiempo requerido para la descarga de las mandarinas, mediante el uso de un timer que simula la espera requerida para concretar dicho procedimiento. Una vez se complete el tiempo de espera se activa la variables `.is_loaded`, que permite proceder con el flujo del sistema.
+
+![Red 1](Assets/Red%201.png)
 
 #### 3.1.2 Red #2
 
@@ -70,45 +70,63 @@ Esta red cuenta con dos _Inputs_, `.is_on` & `.is_selecting`, las cuales una vez
 
 #### 3.1.3 Red #3
 
-algo
+En este punto, se utiliza un timer a través del cual se simuló el tiempo requerido para que una mandarina avance desde el inicio de la cinta transportadora hasta el final de la misma, esto con el fin de conocer después de cuanto tiempo encender el sensor encargado de la detección de mandarinas.
 
 ![Red 3](Assets/Red%203.png)
 
-#### 3.1.4 Red #?
+#### 3.1.4 Red #4
 
-El proceso de seleccion de mandarinas se realiza mediante el uso de un sensor infrarrojo, el cual cuenta con un tiempo de espera de 1 segundo, el cual se activa mediante el uso de un timer. Una vez se complete el tiempo de espera, se activa la variable `.is_selected`, que permite proceder con el flujo del sistema.
+Llegados a esta red, el sensor infrarrojo se enciende, y cuenta con un tiempo de espera definido por la variable `_tangerines_fall_delay`, este tiempo referencia el espacio existente desde que pasa una mandarina por el sensor hasta que pasa la siguiente mandarina, y activa la variable `.is_tagerine_detected` para que se pueda restablecer y proceder con el flujo del sistema.
 
 ![Red 4](Assets/Red%204.png)
 
 #### 3.1.5 Red #5
 
-algo
+Esta red tiene como función generar un tiempo de espera pequeño, determinado por `.t_restart_detection_delay`, y posteriormente reiniciar el detector de mandarinas, de esta forma nos asesoramos que el relay interno del sensor se encuentre restablecido.
 
 ![Red 5](Assets/Red%205.png)
 
 #### 3.1.6 Red #6
 
-algo
+Al llegar a esta red nos encontramos con un contador ascendente (CTU), este será el encargado de contar la cantidad de mandarinas que han pasado por el sensor a lo largo del tiempo, y al llegar al valor definido por la variable `.n_tangerines_per_boxes` activará la segunda cinta transportadora con la siguiente caja vacía, y detendrá la primera cinta para que no caigan mandarinas durante el proceso de ubicar la nueva caja.
 
 ![Red 6](Assets/Red%206.png)
 
 #### 3.1.7 Red #7
 
-algo
+Similar a la red anterior, nos encontramos con un CTU, pero en lugar de contar mandarinas, este se encargará de llevar la cuenta de la totalidad de cajas llenadas durante la sesión de trabajo del sistema, la cantidad de cajas objetivo, o "milestone", se almacenará en la variable `.n_tangerines_per_boxes` y una vez alcanzado este objetivo, se activará la variable `.is_milestone`.
 
 ![Red 7](Assets/Red%207.png)
 
 #### 3.1.8 Red #8
 
-algo
+El timer mostrado en esta red es el encargado de reiniciar el sistema de conteo de las cajas, de forma que cuando se llene una nueva caja, esta se agregara correctamente al contador. Sin este timer, el contador no recibiría un cambio de flanco, y por tanto, no contaría una nueva entrada.
 
 ![Red 8](Assets/Red%208.png)
 
 #### 3.1.9 Red #9
 
-algo
+Esta red es la encargada de volver a iniciar la cinta transportadora de mandarinas y otros elementos, después de que las cajas se hayan terminado de mover y la nueva caja este a disposición para la primera cinta transportadora.
 
 ![Red 9](Assets/Red%209.png)
+
+#### 3.1.10 Red #10
+
+algo
+
+![Red 10](Assets/Red%2010.png)
+
+#### 3.1.11 Red #11
+
+algo
+
+![Red 11](Assets/Red%2011.png)
+
+#### 3.1.12 Red #12
+
+algo
+
+![Red 12](Assets/Red%2012.png)
 
 ### Human Machine Interface (HMI)
 
@@ -147,50 +165,50 @@ Bajo la aproximacion trabajada en el modelo de simulacion, la construccion e imp
 
 Define las variables empleadas en el proceso de automatizacion de la linea de operacion de segmentacion, empaquetao y entrega de mandarinas.
 
-| Sección    | Variable                   | Tipo   | Valor Inicial | Operación | Descripción                                               |
-| :--------- | :------------------------- | :----- | :------------ | :-------- | :-------------------------------------------------------- |
-| `Global`   | is_on                      | `BOOL` | 0             | `Input`   | Define el inicio del sistema                              |
-| `Global`   | is_stop                    | `BOOL` | 0             | `Input`   | Define la parada del sistema                              |
-| `Global`   | is_new_box                 | `BOOL` | 0             | `Output`  | Define la si una nueva caja se ha completado              |
-| `Global`   | is_milestone               | `BOOL` | 0             | `Output`  | Define el objetivo de cajas del dia                       |
-| `Global`   | is_fresh_start             | `BOOL` | 0             | `Output`  | Define el estado inicial del sistema                      |
-| `Global`   | is_reset_box_counter       | `BOOL` | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
-| `Global`   | is_reset_tangerine_counter | `BOOL` | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
-| `Global`   | n_box_counter              | `INT`  | 0             | `Output`  | Mantiene la cuenta de la cantidad de cajas despachadas    |
-| `Global`   | n_tangerine_counter        | `INT`  | 0             | `Output`  | Mantiene la cuenta de la cantidad de manadarinas          |
-| `Global`   | n_tangerines_per_boxes     | `INT`  | 0             | `Output`  | Define el estado inicial del sistema                      |
-| `Global`   | n_boxes_daily_milestone    | `INT`  | 0             | `Output`  | Define el estado inicial del sistema                      |
-| `Flow #0`  | is_loaded                  | `BOOL` | 0             | `Output`  | Define cuando el cargamento de mandarinas se recibio      |
-| `Flow #1`  | is_selecting_tangerines    | `BOOL` | 0             | `Input`   | Define el inicio de la automatizacion                     |
-| `Flow #2`  | is_moving_tangerines       | `BOOL` | 0             | `Output`  | Define el estado de la banda transportadora de mandarinas |
-| `Flow #3`  | is_sensor_active           | `BOOL` | 0             | `Output`  | Define el el tiempo que toma la primera mandarina         |
-| `Flow #3`  | is_tangerine_detected      | `BOOL` | 0             | `Output`  | Define el el tiempo que toma la primera mandarina         |
-| `Flow #4`  | is_moving_boxes            | `BOOL` | 0             | `Output`  | Define el el tiempo que toma la primera mandarina         |
-| `Counters` | ctu_tangerines             | `CTU`  | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
-| `Counters` | ctu_boxes                  | `CTU`  | 0             | `Output`  | Define cuando el contador deba reiniciarse                |
+| Sección    | Variable                   | Tipo   | Valor Inicial | Operación | Descripción                                                              |
+| :--------- | :------------------------- | :----- | :------------ | :-------- | :----------------------------------------------------------------------- |
+| `Global`   | is_on                      | `BOOL` | 0             | `Input`   | Define el estado de inicio del sistema                                   |
+| `Global`   | is_stop                    | `BOOL` | 0             | `Input`   | Define el estado de parada de emergencia del sistema                     |
+| `Global`   | is_new_box                 | `BOOL` | 0             | `Output`  | Define el estado que indica si una nueva caja se ha completado           |
+| `Global`   | is_milestone               | `BOOL` | 0             | `Output`  | Define el estado de si se ha cumplido el objetivo de cajas del dia       |
+| `Global`   | is_fresh_start             | `BOOL` | 0             | `Output`  | Define el estado de si es el primer inicio del sistema                   |
+| `Global`   | is_reset_box_counter       | `BOOL` | 0             | `Output`  | Define el estado de si se debe reiniciar la cuenta de cajas              |
+| `Global`   | is_reset_tangerine_counter | `BOOL` | 0             | `Output`  | Define el estado de si se debe reiniciar la cuenta de mandarinas         |
+| `Global`   | n_box_counter              | `INT`  | 0             | `Output`  | Define la cantidad actual de cajas completadas                           |
+| `Global`   | n_tangerine_counter        | `INT`  | 0             | `Output`  | Define la cantidad actual de manadarinas dentro de una caja              |
+| `Global`   | n_tangerines_per_boxes     | `INT`  | 0             | `Output`  | Define la cantidad de mandarinas maximas por caja                        |
+| `Global`   | n_boxes_daily_milestone    | `INT`  | 0             | `Output`  | Define la cantidad de cajas minimas para completar el objetivo diario    |
+| `Flow #0`  | is_loaded                  | `BOOL` | 0             | `Output`  | Define el estado de si completo la entrega de mandarinas                 |
+| `Flow #1`  | is_selecting_tangerines    | `BOOL` | 0             | `Input`   | Define el estado de si el agente esta seleccionando mandarinas           |
+| `Flow #2`  | is_moving_tangerines       | `BOOL` | 0             | `Output`  | Define el estado de si la banda transportadora de mandarinas esta activa |
+| `Flow #3`  | is_sensor_active           | `BOOL` | 0             | `Output`  | Define el estado de si el sensor infrarojo esta activo                   |
+| `Flow #3`  | is_tangerine_detected      | `BOOL` | 0             | `Output`  | Define el estado de si una mandarina fue detectada cayendo a la caja     |
+| `Flow #4`  | is_moving_boxes            | `BOOL` | 0             | `Output`  | Define el estado de si la banda tranportadora de cajas esta activa       |
+| `Counters` | ctu_tangerines             | `CTU`  | 0             | `Output`  | Define la cantidad actual de mandarinas dentro de la caja                |
+| `Counters` | ctu_boxes                  | `CTU`  | 0             | `Output`  | Define la cantidad actual de cajas completadas                           |
 
 #### 5.2.2 Variables de Simulación
 
 Define las variables empleadas en el proceso de las simulacion de automatizacion de la linea de operacion de segmentacion, empaquetao y entrega de mandarinas.
 
-| Sección   | Variable                    | Tipo   | Valor Inicial | Operación | Descripción                                       |
-| :-------- | :-------------------------- | :----- | :------------ | :-------- | :------------------------------------------------ |
-| `Flow #0` | t_delivery_delay            | `TIME` | T#5S          | `Output`  | Define el tiempo que toma recibir las mandarinas  |
-| `Flow #2` | t_tangerines_conveyor_delay | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
-| `Flow #3` | is_tangerine_not_detected   | `BOOL` | 0             | `Output`  | Define el el tiempo que toma la primera mandarina |
-| `Flow #3` | t_tangerines_fall_delay     | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
-| `Flow #3` | t_restart_detection_delay   | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
-| `Flow #4` | t_boxes_conveyor_delay      | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
-| `Flow #4` | t_restart_new_box_delay     | `TIME` | T#5S          | `Output`  | Define el el tiempo que toma la primera mandarina |
-| `Timers`  | ton_delivery                | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_delivery                 | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_conveyor_tangerines     | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_conveyor_tangerines      | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_tangerine_detector      | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_tangerine_detector       | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_conveyor_boxes          | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_conveyor_boxes           | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_restart_detection       | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_restart_detection        | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | ton_restart_new_box         | `TON`  | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
-| `Timers`  | et_restart_new_box          | `TIME` | ?             | `Output`  | Define cuando el contador deba reiniciarse        |
+| Sección   | Variable                    | Tipo   | Valor Inicial | Operación | Descripción                                                                                                   |
+| :-------- | :-------------------------- | :----- | :------------ | :-------- | :------------------------------------------------------------------------------------------------------------ |
+| `Flow #0` | t_delivery_delay            | `TIME` | T#5S          | `Output`  | Define el tiempo de espera que simula la entrega de mandarinas                                                |
+| `Flow #2` | t_tangerines_conveyor_delay | `TIME` | T#5S          | `Output`  | Define el tiempo de espera que simula el movimiento de la banda transportadora de naranjas                    |
+| `Flow #3` | is_tangerine_not_detected   | `BOOL` | 0             | `Output`  | Define el estado de si una mandarina fue detectada cayaendo a la caja (negada)                                |
+| `Flow #3` | t_tangerines_fall_delay     | `TIME` | T#5S          | `Output`  | Define el tiempo de espera que simula la caida de las mandarinas                                              |
+| `Flow #3` | t_restart_detection_delay   | `TIME` | T#5S          | `Output`  | Define el tiempo de espera que simula el tiempo entre caida de mandarinas                                     |
+| `Flow #4` | t_boxes_conveyor_delay      | `TIME` | T#5S          | `Output`  | Define el tiempo de espera que simula el movimiento de la banda transportadora de cajas                       |
+| `Flow #4` | t_restart_new_box_delay     | `TIME` | T#5S          | `Output`  | Define el tiempo de espera que simula el tiempo entre cajas completadas                                       |
+| `Timers`  | ton_delivery                | `TON`  | ?             | `Output`  | Define el timer que actua como delay para simular la entrega de las mandarinas                                |
+| `Timers`  | et_delivery                 | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_delivery`                                                          |
+| `Timers`  | ton_conveyor_tangerines     | `TON`  | ?             | `Output`  | Define el timer que actua como delay para simular el movimiento de la banda transportadora de mandarinas      |
+| `Timers`  | et_conveyor_tangerines      | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_conveyor_tangerines`                                               |
+| `Timers`  | ton_tangerine_detector      | `TON`  | ?             | `Output`  | Define el timer que actua como delay para simular el tiempo de deteccion entre mandarinas                     |
+| `Timers`  | et_tangerine_detector       | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_tangerine_detector`                                                |
+| `Timers`  | ton_conveyor_boxes          | `TON`  | ?             | `Output`  | Define el timer que actua como delay para simular el tiempo de movimiento de la banda transportadora de cajas |
+| `Timers`  | et_conveyor_boxes           | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_conveyor_boxes`                                                    |
+| `Timers`  | ton_restart_detection       | `TON`  | ?             | `Output`  | Define el timer que actua como delay para reiniciar el timer `ton_conveyor_tangerines`                        |
+| `Timers`  | et_restart_detection        | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_restart_detection`                                                 |
+| `Timers`  | ton_restart_new_box         | `TON`  | ?             | `Output`  | Define el timer que actua como delay para reiniciar el timer `ton_conveyor_boxes`                             |
+| `Timers`  | et_restart_new_box          | `TIME` | ?             | `Output`  | Define el tiempo actual para el timer `ton_restar_new_box`                                                    |
