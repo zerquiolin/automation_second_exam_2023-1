@@ -58,31 +58,31 @@ Bajo la plataforma Codesys se desarrollo un sistema automatizado y simulado bajo
 
 #### 3.1.1 Red #1
 
-Esta red simula el tiempo requerido para la descarga de las mandarinas, mediante el uso de un timer que simula la espera requerida para concretar dicho procedimiento. Una vez se complete el tiempo de espera se activa la variables `.is_loaded`, que permite proceder con el flujo del sistema.
+Esta red simula el tiempo requerido para la descarga de las mandarinas del provedor, mediante el uso de un timer que simula la espera requerida para concretar dicho procedimiento. Una vez se complete el tiempo de espera se activa la variable `.is_loaded`, que permite proceder con el flujo del sistema.
 
 ![Red 1](Assets/Red%201.png)
 
 #### 3.1.2 Red #2
 
-Esta red cuenta con dos _Inputs_, `.is_on` & `.is_selecting`, las cuales una vez se activan, permiten el inicio del proceso de seleccion de mandarinas.
+Esta red cuenta con dos _Inputs_, `.is_on` & `.is_selecting_tangerines`, las cuales una vez se activan, permiten el inicio del proceso de automatizacion del sistema.
 
 ![Red 2](Assets/Red%202.png)
 
 #### 3.1.3 Red #3
 
-En este punto, se utiliza un timer a través del cual se simuló el tiempo requerido para que una mandarina avance desde el inicio de la cinta transportadora hasta el final de la misma, esto con el fin de conocer después de cuanto tiempo encender el sensor encargado de la detección de mandarinas.
+En este punto, se utiliza un timer a través del cual se simula el tiempo requerido para que una mandarina avance desde el inicio de la cinta transportadora hasta el final de la misma, esto con el fin de conocer después de cuanto tiempo se debe encender el sensor encargado de la detección de mandarinas. (Solo es efectivo bajo la primera ejecucion ocurrida dentro de la sesion del sistema, gracias a la variable `.is_fresh_start`)
 
 ![Red 3](Assets/Red%203.png)
 
 #### 3.1.4 Red #4
 
-Llegados a esta red, el sensor infrarrojo se enciende, y cuenta con un tiempo de espera definido por la variable `_tangerines_fall_delay`, este tiempo referencia el espacio existente desde que pasa una mandarina por el sensor hasta que pasa la siguiente mandarina, y activa la variable `.is_tagerine_detected` para que se pueda restablecer y proceder con el flujo del sistema.
+Llegados a esta red, el sensor infrarrojo se enciende, y cuenta con un tiempo de espera definido por la variable `.t_tangerines_fall_delay`, este tiempo referencia el espacio existente desde que pasa una mandarina por el sensor hasta que pasa la siguiente mandarina, y activa la variable `.is_tagerine_detected` para que se pueda proceder con el flujo del sistema.
 
 ![Red 4](Assets/Red%204.png)
 
 #### 3.1.5 Red #5
 
-Esta red tiene como función generar un tiempo de espera pequeño, determinado por `.t_restart_detection_delay`, y posteriormente reiniciar el detector de mandarinas, de esta forma nos asesoramos que el relay interno del sensor se encuentre restablecido.
+Esta red tiene como función generar un tiempo de espera pequeño, determinado por `.t_restart_detection_delay`, y posteriormente reiniciar el detector de mandarinas, de esta forma nos asesoramos que el relay interno del sensor infrarojo se encuentre restablecido para la siguiente mandarina.
 
 ![Red 5](Assets/Red%205.png)
 
@@ -94,7 +94,7 @@ Al llegar a esta red nos encontramos con un contador ascendente (CTU), este ser�
 
 #### 3.1.7 Red #7
 
-Similar a la red anterior, nos encontramos con un CTU, pero en lugar de contar mandarinas, este se encargará de llevar la cuenta de la totalidad de cajas llenadas durante la sesión de trabajo del sistema, la cantidad de cajas objetivo, o "milestone", se almacenará en la variable `.n_tangerines_count` y una vez alcanzado este objetivo, se activará la variable `.is_milestone`.
+Similar a la red anterior, nos encontramos con un CTU, pero en lugar de contar mandarinas, este se encargará de llevar la cuenta de la totalidad de cajas llenadas durante la sesión de trabajo del sistema bajo la variable `.n_box_counter`. La cantidad de cajas objetivo, o "milestone", se almacena en la variable `.n_boxes_daily_milestone` y una vez alcanzado este objetivo, se activará la variable `.is_milestone`.
 
 ![Red 7](Assets/Red%207.png)
 
@@ -106,25 +106,25 @@ El timer mostrado en esta red es el encargado de bajar el flanco del sistema de 
 
 #### 3.1.9 Red #9
 
-Esta red es la encargada de volver a iniciar la cinta transportadora de mandarinas y otros elementos, después de que las cajas se hayan terminado de mover y la nueva caja este a disposición para la primera cinta transportadora.
+Esta red es la encargada de volver a iniciar la cinta transportadora de mandarinas y otros elementos, después de que las cajas se hayan terminado de mover y la nueva caja este a disposición para las mandarinas transportadas por la primera cinta transportadora.
 
 ![Red 9](Assets/Red%209.png)
 
 #### 3.1.10 Red #10
 
-algo
+Esta es una red auxiliar empleada para asignar el valor negado de la variable `.is_tangerine_detected` a la variable `.is_tangerine_not_detected`, esto con el fin de poder utilizar dicha variable como recurso para un mejor manejo de animaciones y estados del sistema.
 
 ![Red 10](Assets/Red%2010.png)
 
 #### 3.1.11 Red #11
 
-algo
+Red encargada de reiniciar todos los estados y variables del sistema, para que este pueda volver a funcionar de forma correcta en una nueva sesion de trabajo.
 
 ![Red 11](Assets/Red%2011.png)
 
 #### 3.1.12 Red #12
 
-algo
+Red encargada de reiniciar todos los estados y variables del sistema bajo una emergencia. Ademas, bloquea el funcionamiento general del sistema para que este pueda volver a funcionar de forma correcta en una nueva sesion de trabajo una vez haya concluido dicha emergencia.
 
 ![Red 12](Assets/Red%2012.png)
 
@@ -133,6 +133,8 @@ algo
 La HMI permite la interaccion con el usuario, permitiendo el inicio, paro, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones.
 
 ![HMI](Assets/HMI.jpg)
+
+La informacion proporcionada por la HMI busca mantener una relacion directa con respecto a los estados y operaciones del sistema, incluyendo ilulstraciones graficas que indican el estado actual de diversos procesos, variables y puntos en el tiempo mediante indicadores luminicos, botones y barras de progreso. Ademas, expresa de manera simple el flujo definido en el diseño de la solucion mediante animaciones, iconos, y colores.
 
 ## 4. Implementación
 
