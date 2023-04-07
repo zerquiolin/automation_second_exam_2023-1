@@ -48,11 +48,73 @@ Proceso encargado de transportar las cajas pasando desde el punto de deteccion h
 
 El flujo resultante de los segmentos analizados y definidos, se presenta a continuacion.
 
-![Diagrama de Flujo](Diagrama%20de%20Flujo.png)
+![Diagrama de Flujo](Assets/Diagrama%20de%20Flujo.png)
 
 ## 3. Modelo de Simulación
 
-Bajo la plataforma Codesys se desarrollo un sistema automatizado y simulado que suple las necesidades escenciales para Fruver 1A S.A, mediante la implementacion de los diferentes flujos identificados en el analisis de la problematica, incluyendo en cada uno de ellos estados, variables y eventos que permiten el correcto funcionamiento del sistema. Ademas, mediante una HMI (Human Machine Interface) se permite la interaccion con el usuario, permitiendo el inicio, paro, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones.
+Bajo la plataforma Codesys se desarrollo un sistema automatizado y simulado bajo el lenguaje ladder, que suple las necesidades escenciales para Fruver 1A S.A, mediante la implementacion de los diferentes flujos identificados en el analisis de la problematica, incluyendo en cada uno de ellos estados, variables y eventos que permiten el correcto funcionamiento del sistema. Ademas, mediante una HMI (Human Machine Interface) se permite la interaccion con el usuario, permitiendo el inicio, paro, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones.
+
+### 3.1 Programación Ladder
+
+#### 3.1.1 Red #1
+
+![Red 1](Assets/Red%201.png)
+
+Esta red simula el tiempo requerido para la descarga de las mandarinas, mediante el uso de un timer que simula la espera requerida para concretar dicho procedimiento. Una vez se complete el tiempo de espera se activa la variables `.is_loaded`, que permite proceder con el flujo del sistema.
+
+#### 3.1.2 Red #2
+
+Esta red cuenta con dos _Inputs_, `.is_on` & `.is_selecting`, las cuales una vez se activan, permiten el inicio del proceso de seleccion de mandarinas.
+
+![Red 2](Assets/Red%202.png)
+
+#### 3.1.3 Red #3
+
+algo
+
+![Red 3](Assets/Red%203.png)
+
+#### 3.1.4 Red #?
+
+El proceso de seleccion de mandarinas se realiza mediante el uso de un sensor infrarrojo, el cual cuenta con un tiempo de espera de 1 segundo, el cual se activa mediante el uso de un timer. Una vez se complete el tiempo de espera, se activa la variable `.is_selected`, que permite proceder con el flujo del sistema.
+
+![Red 4](Assets/Red%204.png)
+
+#### 3.1.5 Red #5
+
+algo
+
+![Red 5](Assets/Red%205.png)
+
+#### 3.1.6 Red #6
+
+algo
+
+![Red 6](Assets/Red%206.png)
+
+#### 3.1.7 Red #7
+
+algo
+
+![Red 7](Assets/Red%207.png)
+
+#### 3.1.8 Red #8
+
+algo
+
+![Red 8](Assets/Red%208.png)
+
+#### 3.1.9 Red #9
+
+algo
+
+![Red 9](Assets/Red%209.png)
+
+### Human Machine Interface (HMI)
+
+La HMI permite la interaccion con el usuario, permitiendo el inicio, paro, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones.
+
+![HMI](Assets/HMI.jpg)
 
 ## 4. Implementación
 
