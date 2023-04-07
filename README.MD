@@ -94,13 +94,13 @@ Al llegar a esta red nos encontramos con un contador ascendente (CTU), este ser�
 
 #### 3.1.7 Red #7
 
-Similar a la red anterior, nos encontramos con un CTU, pero en lugar de contar mandarinas, este se encargará de llevar la cuenta de la totalidad de cajas llenadas durante la sesión de trabajo del sistema, la cantidad de cajas objetivo, o "milestone", se almacenará en la variable `.n_tangerines_per_boxes` y una vez alcanzado este objetivo, se activará la variable `.is_milestone`.
+Similar a la red anterior, nos encontramos con un CTU, pero en lugar de contar mandarinas, este se encargará de llevar la cuenta de la totalidad de cajas llenadas durante la sesión de trabajo del sistema, la cantidad de cajas objetivo, o "milestone", se almacenará en la variable `.n_tangerines_count` y una vez alcanzado este objetivo, se activará la variable `.is_milestone`.
 
 ![Red 7](Assets/Red%207.png)
 
 #### 3.1.8 Red #8
 
-El timer mostrado en esta red es el encargado de reiniciar el sistema de conteo de las cajas, de forma que cuando se llene una nueva caja, esta se agregara correctamente al contador. Sin este timer, el contador no recibiría un cambio de flanco, y por tanto, no contaría una nueva entrada.
+El timer mostrado en esta red es el encargado de bajar el flanco del sistema de conteo de las cajas, de forma que cuando se llene una nueva caja, esta se agregara correctamente al contador. Sin este timer, el contador no recibiría un cambio de flanco, y por tanto, no contaría una nueva entrada.
 
 ![Red 8](Assets/Red%208.png)
 
@@ -142,7 +142,7 @@ Bajo la aproximacion trabajada en el modelo de simulacion, la construccion e imp
 2. Servomotores
 3. Bateria
 4. Cableado y Conectores
-   1. Sensor Infrarrojo
+5. Sensor Infrarrojo
 
 ### 4.1 Diagrama de Circuito Eléctrico
 
