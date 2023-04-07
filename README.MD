@@ -136,6 +136,10 @@ La HMI permite la interaccion con el usuario, permitiendo el inicio, paro, reini
 
 La informacion proporcionada por la HMI busca mantener una relacion directa con respecto a los estados y operaciones del sistema, incluyendo ilulstraciones graficas que indican el estado actual de diversos procesos, variables y puntos en el tiempo mediante indicadores luminicos, botones y barras de progreso. Ademas, expresa de manera simple el flujo definido en el diseño de la solucion mediante animaciones, iconos, y colores.
 
+
+https://user-images.githubusercontent.com/62365030/230659743-c020f4ee-137b-43b9-b697-f08db5da9489.mp4
+
+
 ## 4. Implementación
 
 Bajo la aproximacion trabajada en el modelo de simulacion, la construccion e implementacion de la solucion a un protipo fisico implico el uso de diverso materiales como:
