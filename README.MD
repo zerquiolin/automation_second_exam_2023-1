@@ -178,8 +178,8 @@ Define las variables empleadas en el proceso de automatizacion de la linea de op
 | `Global`   | is_reset_tangerine_counter | `BOOL` | 0             | `Output`  | Define el estado de si se debe reiniciar la cuenta de mandarinas         |
 | `Global`   | n_box_counter              | `INT`  | 0             | `Output`  | Define la cantidad actual de cajas completadas                           |
 | `Global`   | n_tangerine_counter        | `INT`  | 0             | `Output`  | Define la cantidad actual de manadarinas dentro de una caja              |
-| `Global`   | n_tangerines_per_boxes     | `INT`  | 0             | `Output`  | Define la cantidad de mandarinas maximas por caja                        |
-| `Global`   | n_boxes_daily_milestone    | `INT`  | 0             | `Output`  | Define la cantidad de cajas minimas para completar el objetivo diario    |
+| `Global`   | n_tangerines_per_boxes     | `INT`  | 50            | `Output`  | Define la cantidad de mandarinas maximas por caja                        |
+| `Global`   | n_boxes_daily_milestone    | `INT`  | 100           | `Output`  | Define la cantidad de cajas minimas para completar el objetivo diario    |
 | `Flow #0`  | is_loaded                  | `BOOL` | 0             | `Output`  | Define el estado de si completo la entrega de mandarinas                 |
 | `Flow #1`  | is_selecting_tangerines    | `BOOL` | 0             | `Input`   | Define el estado de si el agente esta seleccionando mandarinas           |
 | `Flow #2`  | is_moving_tangerines       | `BOOL` | 0             | `Output`  | Define el estado de si la banda transportadora de mandarinas esta activa |
