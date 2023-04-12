@@ -205,6 +205,9 @@ Una vez se verificó el funcionamiento lógico del montaje arduino, se realizó 
 
 ### 4.3 Diagrama de Circuito Eléctrico
 
+Finalmente, se muestra a continuación el diagrama de circuito eléctrico, el cual muestra las entradas y salidas vinculadas al PLC:
+![Diagrama de Circuito Electrico](Assets/DiagramaCircuitoElectrico.jpg)
+
 ## 5. Anexos
 
 ### 5.1 Tipos
