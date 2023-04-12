@@ -52,7 +52,7 @@ El flujo resultante de los segmentos analizados y definidos, se presenta a conti
 
 ## 3. Modelo de Simulación
 
-Bajo la plataforma Codesys se desarrolló un sistema automatizado y simulado bajo el lenguaje ladder, que suple las necesidades escenciales para Fruver 1A S.A, mediante la implementación de los diferentes flujos identificados en el análisis de la problemática, incluyendo en cada uno de ellos estados, variables y eventos que permiten el correcto funcionamiento del sistema. Además, mediante una HMI (Human Machine Interface) se permite la interaccion con el usuario, permitiendo el inicio, detención, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones.
+Bajo la plataforma Codesys se desarrolló un sistema automatizado y simulado bajo el lenguaje ladder, que suple las necesidades escenciales para Fruver 1A S.A, mediante la implementación de los diferentes flujos identificados en el análisis de la problemática, incluyendo en cada uno de ellos estados, variables y eventos que permiten el correcto funcionamiento del sistema. Además, mediante una HMI (Human Machine Interface) se permite la interaccion con el usuario, permitiendo el inicio, detención, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones. Si se desean ver los flujos con mayor detalle, consultar el documento  ![Codesys](Codesys/DocumentCodesys.pdf)
 
 ### 3.1 Programación Ladder
 
