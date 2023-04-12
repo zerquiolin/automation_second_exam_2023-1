@@ -136,21 +136,71 @@ La HMI permite la interaccion con el usuario, permitiendo el inicio, paro, reini
 
 La informacion proporcionada por la HMI busca mantener una relacion directa con respecto a los estados y operaciones del sistema, incluyendo ilulstraciones graficas que indican el estado actual de diversos procesos, variables y puntos en el tiempo mediante indicadores luminicos, botones y barras de progreso. Ademas, expresa de manera simple el flujo definido en el diseño de la solucion mediante animaciones, iconos, y colores.
 
-
 https://user-images.githubusercontent.com/62365030/230659743-c020f4ee-137b-43b9-b697-f08db5da9489.mp4
-
 
 ## 4. Implementación
 
-Bajo la aproximacion trabajada en el modelo de simulacion, la construccion e implementacion de la solucion a un protipo fisico implico el uso de diverso materiales como:
+El montaje del protipo se realizo consta de una parte fisica y una parte logica, la parte fisica se encarga de la construccion del prototipo, mientras que la parte logica se encarga de la programacion del sistema. La parte fisica se realizo mediante la construccion de un prototipo en base a los materiales mencionados anteriormente, mientras que la parte logica se realizo mediante la programacion del sistema en base al lenguaje ladder en el software openPLC.
 
-1. Arduino UNO
-2. Servomotores
-3. Bateria
-4. Cableado y Conectores
-5. Sensor Infrarrojo
+### 4.1 Construcción del Prototipo Parte Logica
 
-### 4.1 Diagrama de Circuito Eléctrico
+Mediante manejo de estados, entradas y salidas correspondientes a actuadores como sensores, botones, entre otros. Se gestiono el flujo de trabajo de la linea de operacion de tal forma que permitiera la pausa, reinicio de emergencia e inicio del sistema de forma correcta.
+
+#### 4.1.1 Red #1
+
+Define el inicio del sistema, mediante reinicio de contadores y activacion de la banda de tranporte de mandarinas.
+
+![Red 1](Assets/Red%201%20PLC.png)
+
+#### 4.1.2 Red #2
+
+Define el funcionamiento correspondiente al movimiento de la banda de transporte de cajas, mediante el uso de un timer TON, el cual permite la activacion de la banda de transporte de cajas por un tiempo determinado, y posteriormente, la desactivacion de la misma.
+
+![Red 2](Assets/Red%202%20PLC.png)
+
+#### 4.1.3 Red #3
+
+Define el funcionamiento correspondiente al conteo de las mandarinas en la caja, mediante la activacion por el sensor de proximidad (sensor infrarojo). Ademas, una vez completado el conteo, se activa la banda de transporte de cajas para que esta pueda transportar la caja llena a la estacion de empaquetado.
+
+![Red 3](Assets/Red%203%20PLC.png)
+
+#### 4.1.4 Red #4
+
+Define el funcionamiento correspondiente al conteo de las cajas completas, mediante el registro de la cantidad de mandarinas registradas y el movimiento de la banda transportadora. Ademas, una vez completado el conteo, se activa la bandera del objetivo del dia (milestone) indicando que se ha cumplico con exito la cantidad objetivo de cajas esperadas.
+
+![Red 4](Assets/Red%204%20PLC.png)
+
+#### 4.1.5 Red #5
+
+Deifne el funcionamiento correspondiente al estado apagado del sistema, desactivando todos los modulos del sistema asi como sus respectivas variables y estados.
+
+![Red 5](Assets/Red%205%20PLC.png)
+
+#### 4.1.6 Red #6
+
+Define el funcionamiento correspondiente al estado de emergencia del sistema, inabilitando todos los modulos y reiniciando completamente el sistema.
+
+![Red 6](Assets/Red%206%20PLC.png)
+
+#### 4.1.7 Red #7
+
+Define el funcionamiento correspondiente al estado de pausa del sistema, inabilitando el funcionamiento de la banda de transporte de mandarinas y la banda de transporte de cajas.
+
+![Red 7](Assets/Red%207%20PLC.png)
+
+### 4.2 Construcción del Prototipo Parte Fisica
+
+El prototipo se construyo mediante la utilizacion de materiales como Arduino UNO, motorreductores, leds RGB, bateria de 9V, cableado y conectores, sensor infrarojo, entre otros. El prototipo se construyo de tal forma que permitiera la automatizacion de la linea de operacion de segmentacion, empaquetao y entrega de mandarinas. Ademas, permite la interaccion con el usuario mediante un controlador, el cual permite el inicio, paro, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores luminicos.
+
+#### 4.2.1 Configuracion Funcional
+
+![Configuracion Funcional](Assets/Montaje%20de%20Configuracion.jpg)
+
+#### 4.2.2 Configuracion Fisica
+
+![Configuracion Fisica](Assets/Montaje%20de%20Configuracion%20Fisica.jpg)
+
+### 4.3 Diagrama de Circuito Eléctrico
 
 ## 5. Anexos
 
