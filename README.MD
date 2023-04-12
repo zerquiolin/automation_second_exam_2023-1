@@ -8,7 +8,7 @@
 
 ## 1. Análisis de la Problemática
 
-Fruver 1A S.A, una comercializadora de mandarinas busca aumentar su produccion para desarrollarse y competir al nivel de comercializadoras internacionales. Por lo cual, propone la automatización de la línea de operación de segmentación, empaquetado y entrega de mandarinas, mediante un sistema que permita mantener control y calidad para asegurar la cantidad, calidad y entrega requerida.
+Fruver 1A S.A, una comercializadora de mandarinas busca aumentar su producción para desarrollarse y competir al nivel de comercializadoras internacionales. Por lo cual, propone la automatización de la línea de operación de segmentación, empaquetado y entrega de mandarinas, mediante un sistema que permita mantener control y calidad para asegurar la cantidad, calidad y entrega requerida.
 
 ## 2. Diseño de la Solución
 
@@ -18,41 +18,41 @@ Identificando los aspectos claves para plantear un sistema automatizado que cump
 2. Cada paquete debe contar con 50 mandarinas.
 3. No se debe requerir de intervension de personal a la hora de llenar los paquetes de mandarinas.
 
-Por lo cual, buscando mantener una correcta segmentacion y empaquetado de las mandarinas, se divira el sistema en 5 flujos, los cuales cumplen una unica funcion basica, buscando control y calidad en la entrega de mandarinas, mediante su cuantificacion y empaquetado, evitando desperdicios y/o empaquetado de mandarinas fuera de lo inicialmente pactado, los flujo son presentados a continuacion.
+Por lo cual, buscando mantener una correcta segmentación y empaquetado de las mandarinas, se divirá el sistema en 5 flujos, los cuales cumplen una única función básica, buscando control y calidad en la entrega de mandarinas, mediante su cuantificación y empaquetado, evitando desperdicios y/o empaquetado de mandarinas fuera de lo inicialmente pactado, los flujos son presentados a continuación.
 
 ### 2.1 Flujo del Sistema
 
-Flujo dedicado a la recopilacion del cargamento de mandarinas, desempacado, seleccion de mandarinas, transporte de mandarinas, deteccion y cuenta de mandarinas, transporte de cajas y entrega de paquetes.
+Flujo dedicado a la recopilación del cargamento de mandarinas, desempacado, selección de mandarinas, transporte de mandarinas, detección y cuenta de mandarinas, transporte de cajas y entrega de paquetes.
 
 #### 2.1.1 Flow #0 - Cargamento
 
-Proceso encargado de recibir, almacenar y actualizar el estado del cargamento entrante de mandarinas. Un agente es el encargado de la recoleccion y almacenamiento de las mandarinas.
+Proceso encargado de recibir, almacenar y actualizar el estado del cargamento entrante de mandarinas. Un agente es el encargado de la recolección y almacenamiento de las mandarinas.
 
-#### 2.1.2 Flow #1 - Descarga y Seleccion
+#### 2.1.2 Flow #1 - Descarga y Selección
 
-Proceso delegado de descargar las mandarinas y llevarlas a la linea de transporte, seleccionando las mandarinas que cumplan con los estandares de calidad requeridos. Un agente es el encargado de la seleccion de las mandarinas.
+Proceso delegado de descargar las mandarinas y llevarlas a la línea de transporte, seleccionando las mandarinas que cumplan con los estándares de calidad requeridos. Un agente es el encargado de la selección de las mandarinas.
 
 #### 2.1.3 Flow #2 - Transporte de Mandarinas
 
-Proceso encargado de transportar las mandarinas seleccionadas desde el punto de seleccion del agente hasta el punto de deteccion de mandarinas.
+Proceso encargado de transportar las mandarinas seleccionadas desde el punto de selección del agente hasta el punto de detección de mandarinas.
 
-#### 2.1.4 Flow #3 - Deteccion y Cuenta de Mandarinas
+#### 2.1.4 Flow #3 - Detección y Cuenta de Mandarinas
 
-Proceso encargado de identificar y contar las mandarinas que pasan por el punto de deteccion, actualizando el estado del sistema para detener o activar las bandas de transporte.
+Proceso encargado de identificar y contar las mandarinas que pasan por el punto de detección, actualizando el estado del sistema para detener o activar las bandas de transporte.
 
 #### 2.1.5 Flow #4 - Transporte de Cajas
 
-Proceso encargado de transportar las cajas pasando desde el punto de deteccion hasta el punto de entrega.
+Proceso encargado de transportar las cajas pasando desde el punto de detección hasta el punto de entrega.
 
 ### 2.2 Diagrama de Flujo
 
-El flujo resultante de los segmentos analizados y definidos, se presenta a continuacion.
+El flujo resultante de los segmentos analizados y definidos, se presenta a continuación.
 
 ![Diagrama de Flujo](Assets/Diagrama%20de%20Flujo.png)
 
 ## 3. Modelo de Simulación
 
-Bajo la plataforma Codesys se desarrollo un sistema automatizado y simulado bajo el lenguaje ladder, que suple las necesidades escenciales para Fruver 1A S.A, mediante la implementacion de los diferentes flujos identificados en el analisis de la problematica, incluyendo en cada uno de ellos estados, variables y eventos que permiten el correcto funcionamiento del sistema. Ademas, mediante una HMI (Human Machine Interface) se permite la interaccion con el usuario, permitiendo el inicio, paro, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones.
+Bajo la plataforma Codesys se desarrolló un sistema automatizado y simulado bajo el lenguaje ladder, que suple las necesidades escenciales para Fruver 1A S.A, mediante la implementación de los diferentes flujos identificados en el análisis de la problemática, incluyendo en cada uno de ellos estados, variables y eventos que permiten el correcto funcionamiento del sistema. Además, mediante una HMI (Human Machine Interface) se permite la interaccion con el usuario, permitiendo el inicio, detención, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones.
 
 ### 3.1 Programación Ladder
 
@@ -64,13 +64,13 @@ Esta red simula el tiempo requerido para la descarga de las mandarinas del prove
 
 #### 3.1.2 Red #2
 
-Esta red cuenta con dos _Inputs_, `.is_on` & `.is_selecting_tangerines`, las cuales una vez se activan, permiten el inicio del proceso de automatizacion del sistema.
+Esta red cuenta con dos _Inputs_, `.is_on` & `.is_selecting_tangerines`, las cuales una vez se activan, permiten el inicio del proceso de automatización del sistema.
 
 ![Red 2](Assets/Red%202.png)
 
 #### 3.1.3 Red #3
 
-En este punto, se utiliza un timer a través del cual se simula el tiempo requerido para que una mandarina avance desde el inicio de la cinta transportadora hasta el final de la misma, esto con el fin de conocer después de cuanto tiempo se debe encender el sensor encargado de la detección de mandarinas. (Solo es efectivo bajo la primera ejecucion ocurrida dentro de la sesion del sistema, gracias a la variable `.is_fresh_start`)
+En este punto, se utiliza un timer a través del cual se simula el tiempo requerido para que una mandarina avance desde el inicio de la cinta transportadora hasta el final de la misma, esto, con el fin de conocer después de cuanto tiempo se debe encender el sensor encargado de la detección de mandarinas. (Solo es efectivo bajo la primera ejecución ocurrida dentro de la sesión del sistema, gracias a la variable `.is_fresh_start`)
 
 ![Red 3](Assets/Red%203.png)
 
@@ -100,7 +100,7 @@ Similar a la red anterior, nos encontramos con un CTU, pero en lugar de contar m
 
 #### 3.1.8 Red #8
 
-El timer mostrado en esta red es el encargado de bajar el flanco del sistema de conteo de las cajas, de forma que cuando se llene una nueva caja, esta se agregara correctamente al contador. Sin este timer, el contador no recibiría un cambio de flanco, y por tanto, no contaría una nueva entrada.
+El timer mostrado en esta red es el encargado de bajar el flanco del sistema de conteo de las cajas, de forma que cuando se llene una nueva caja, esta se agregará correctamente al contador. Sin este timer, el contador no recibiría un cambio de flanco, y por tanto, no contaría una nueva entrada.
 
 ![Red 8](Assets/Red%208.png)
 
@@ -124,55 +124,55 @@ Red encargada de reiniciar todos los estados y variables del sistema, para que e
 
 #### 3.1.12 Red #12
 
-Red encargada de reiniciar todos los estados y variables del sistema bajo una emergencia. Ademas, bloquea el funcionamiento general del sistema para que este pueda volver a funcionar de forma correcta en una nueva sesion de trabajo una vez haya concluido dicha emergencia.
+Red encargada de reiniciar todos los estados y variables del sistema bajo una emergencia. Ademas, bloquea el funcionamiento general del sistema, para que este pueda volver a funcionar de forma correcta en una nueva sesión de trabajo una vez haya concluido dicha emergencia.
 
 ![Red 12](Assets/Red%2012.png)
 
 ### Human Machine Interface (HMI)
 
-La HMI permite la interaccion con el usuario, permitiendo el inicio, paro, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores y animaciones.
+La HMI permite la interacción con el usuario, permitiendo el inicio, detención, reinicio del sistema y la visualización de los estados y variables del sistema por medio de indicadores y animaciones.
 
 ![HMI](Assets/HMI.jpg)
 
-La informacion proporcionada por la HMI busca mantener una relacion directa con respecto a los estados y operaciones del sistema, incluyendo ilulstraciones graficas que indican el estado actual de diversos procesos, variables y puntos en el tiempo mediante indicadores luminicos, botones y barras de progreso. Ademas, expresa de manera simple el flujo definido en el diseño de la solucion mediante animaciones, iconos, y colores.
+La información proporcionada por la HMI busca mantener una relación directa con respecto a los estados y operaciones del sistema, incluyendo ilulstraciones gráficas que indican el estado actual de diversos procesos, variables y puntos en el tiempo mediante indicadores luminicos, botones y barras de progreso. Ademas, expresa de manera simple el flujo definido en el diseño de la solucion mediante animaciones, iconos, y colores.
 
 https://user-images.githubusercontent.com/62365030/230659743-c020f4ee-137b-43b9-b697-f08db5da9489.mp4
 
 ## 4. Implementación
 
-El montaje del protipo se realizo consta de una parte fisica y una parte logica, la parte fisica se encarga de la construccion del prototipo, mientras que la parte logica se encarga de la programacion del sistema. La parte fisica se realizo mediante la construccion de un prototipo en base a los materiales mencionados anteriormente, mientras que la parte logica se realizo mediante la programacion del sistema en base al lenguaje ladder en el software openPLC.
+El montaje del protipo consta de un segmento físico y una segmento lógico, la segmento físico se encarga de recrear el funcionamiento del prototipo en un ambiente funcional, mientras que el segmento lógico se encarga de la programación del sistema. El segmento físico se realizó mediante la construcción de un prototipo con base a los materiales mencionados anteriormente, mientras que el segmento lógico se realizó mediante la programación del sistema con base al lenguaje ladder en el software openPLC. A continuación se expone en mayor detalle lo mencionado anteriormente.
 
-### 4.1 Construcción del Prototipo Parte Logica
+### 4.1 Construcción del Prototipo: Segmento Lógico
 
-Mediante manejo de estados, entradas y salidas correspondientes a actuadores como sensores, botones, entre otros. Se gestiono el flujo de trabajo de la linea de operacion de tal forma que permitiera la pausa, reinicio de emergencia e inicio del sistema de forma correcta.
+Mediante manejo de estados, entradas y salidas correspondientes a actuadores como sensores, botones, entre otros. Se gestionó el flujo de trabajo de la linea de operacion de tal forma que permitiera la pausa, reinicio de emergencia e inicio del sistema de forma correcta.
 
 #### 4.1.1 Red #1
 
-Define el inicio del sistema, mediante reinicio de contadores y activacion de la banda de tranporte de mandarinas.
+Define el inicio del sistema, mediante reinicio de contadores y activación de la banda de tranporte de mandarinas.
 
 ![Red 1](Assets/Red%201%20PLC.png)
 
 #### 4.1.2 Red #2
 
-Define el funcionamiento correspondiente al movimiento de la banda de transporte de cajas, mediante el uso de un timer TON, el cual permite la activacion de la banda de transporte de cajas por un tiempo determinado, y posteriormente, la desactivacion de la misma.
+Define el funcionamiento correspondiente al movimiento de la banda de transporte de cajas, mediante el uso de un timer TON, el cual permite la activación de la banda de transporte de cajas por un tiempo determinado, y posteriormente, la desactivación de la misma.
 
 ![Red 2](Assets/Red%202%20PLC.png)
 
 #### 4.1.3 Red #3
 
-Define el funcionamiento correspondiente al conteo de las mandarinas en la caja, mediante la activacion por el sensor de proximidad (sensor infrarojo). Ademas, una vez completado el conteo, se activa la banda de transporte de cajas para que esta pueda transportar la caja llena a la estacion de empaquetado.
+Define el funcionamiento correspondiente al conteo de las mandarinas en la caja, mediante la activación por el sensor de proximidad (sensor infrarojo). Además, una vez completado el conteo, se activa la banda de transporte de cajas para que esta pueda transportar la caja llena a la estación de empaquetado.
 
 ![Red 3](Assets/Red%203%20PLC.png)
 
 #### 4.1.4 Red #4
 
-Define el funcionamiento correspondiente al conteo de las cajas completas, mediante el registro de la cantidad de mandarinas registradas y el movimiento de la banda transportadora. Ademas, una vez completado el conteo, se activa la bandera del objetivo del dia (milestone) indicando que se ha cumplico con exito la cantidad objetivo de cajas esperadas.
+Define el funcionamiento correspondiente al conteo de las cajas llenas, mediante el registro de la cantidad de mandarinas registradas y el movimiento de la banda transportadora. Ademas, una vez completado el conteo, se activa la bandera del objetivo del dia (milestone) indicando que se ha cumplico con éxito la cantidad objetivo de cajas esperadas.
 
 ![Red 4](Assets/Red%204%20PLC.png)
 
 #### 4.1.5 Red #5
 
-Deifne el funcionamiento correspondiente al estado apagado del sistema, desactivando todos los modulos del sistema asi como sus respectivas variables y estados.
+Define el funcionamiento correspondiente al estado apagado del sistema, desactivando todos los módulos del sistema, así como sus respectivas variables y estados.
 
 ![Red 5](Assets/Red%205%20PLC.png)
 
@@ -188,9 +188,9 @@ Define el funcionamiento correspondiente al estado de pausa del sistema, inabili
 
 ![Red 7](Assets/Red%207%20PLC.png)
 
-### 4.2 Construcción del Prototipo Parte Fisica
+### 4.2 Construcción del Prototipo: Segmento Físico
 
-El prototipo se construyo mediante la utilizacion de materiales como Arduino UNO, motorreductores, leds RGB, bateria de 9V, cableado y conectores, sensor infrarojo, entre otros. El prototipo se construyo de tal forma que permitiera la automatizacion de la linea de operacion de segmentacion, empaquetao y entrega de mandarinas. Ademas, permite la interaccion con el usuario mediante un controlador, el cual permite el inicio, paro, reinicio del sistema y la visualizacion de los estados y variables del sistema por medio de indicadores luminicos.
+El prototipo se construyó mediante la utilización de materiales como Arduino UNO, motorreductores, leds RGB, bateria de 9V, cableado y conectores, sensor infrarojo, entre otros. El prototipo se construyó de tal forma que permitiera la automatización de la línea de operación, segmentación, empaquetado y entrega de mandarinas. Además, permite la interacción con el usuario mediante un controlador, el cual permite el inicio, detención, reinicio del sistema y la visualización de los estados y variables del sistema por medio de indicadores lumínicos.
 
 #### 4.2.1 Configuracion Funcional
 
@@ -219,7 +219,7 @@ El prototipo se construyo mediante la utilizacion de materiales como Arduino UNO
 
 #### 5.2.1 Variables de Proceso
 
-Define las variables empleadas en el proceso de automatizacion de la linea de operacion de segmentacion, empaquetao y entrega de mandarinas.
+Define las variables empleadas en el proceso de automatización de la línea de operación de segmentación, empaquetado y entrega de mandarinas.
 
 | Sección    | Variable                   | Tipo   | Valor Inicial | Operación | Descripción                                                              |
 | :--------- | :------------------------- | :----- | :------------ | :-------- | :----------------------------------------------------------------------- |
@@ -245,7 +245,7 @@ Define las variables empleadas en el proceso de automatizacion de la linea de op
 
 #### 5.2.2 Variables de Simulación
 
-Define las variables empleadas en el proceso de las simulacion de automatizacion de la linea de operacion de segmentacion, empaquetao y entrega de mandarinas.
+Define las variables empleadas en el proceso de las simulación de automatización de la línea de operación de segmentación, empaquetado y entrega de mandarinas.
 
 | Sección   | Variable                    | Tipo   | Valor Inicial | Operación | Descripción                                                                                                   |
 | :-------- | :-------------------------- | :----- | :------------ | :-------- | :------------------------------------------------------------------------------------------------------------ |
