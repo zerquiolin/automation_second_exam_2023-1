@@ -192,13 +192,16 @@ Define el funcionamiento correspondiente al estado de pausa del sistema, inabili
 
 El prototipo se construyó mediante la utilización de materiales como Arduino UNO, motorreductores, leds RGB, bateria de 9V, cableado y conectores, sensor infrarojo, entre otros. El prototipo se construyó de tal forma que permitiera la automatización de la línea de operación, segmentación, empaquetado y entrega de mandarinas. Además, permite la interacción con el usuario mediante un controlador, el cual permite el inicio, detención, reinicio del sistema y la visualización de los estados y variables del sistema por medio de indicadores lumínicos.
 
-#### 4.2.1 Configuracion Funcional
+#### 4.2.1 Configuración Funcional
 
+Se realizaron los montajes en la placa arduino utilizando la función incorporada de OpenPLC, junto a los leds utilizados como indicadores y el sensor se realizó el primer montaje, en el cual se corroboró que el comportamiento del montaje en la placa tuviera el mismo comportamiento que la versión digital dentro del Software, el resultado se puede evidenciar a continuación.
 ![Configuracion Funcional](Assets/Montaje%20de%20Configuracion.jpg)
 
-#### 4.2.2 Configuracion Fisica
+#### 4.2.2 Configuración Física
 
-![Configuracion Fisica](Assets/Montaje%20de%20Configuracion%20Fisica.jpg)
+Una vez se verificó el funcionamiento lógico del montaje arduino, se realizó la maqueta funcional, la cual ya implementaba en un diseño los botones, indicadores lumínicos, modelos a escala de las bandas transportadoras y los motores. El montaje final se expone adelante:
+![Configuracion Fisica](Assets/MontajeFinal1.jpg)
+![Configuracion Fisica](Assets/MontajeFinal2.jpg)
 
 ### 4.3 Diagrama de Circuito Eléctrico
 
